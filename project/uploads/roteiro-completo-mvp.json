@@ -1,0 +1,598 @@
+{
+  "fonte": "Texto colado(1).txt — aba 05-MI-Liu-Bud-Vien-Klag-Bol-Mi colada como TSV",
+  "mapa": "https://maps.app.goo.gl/DRUELgQp6tvGzj7M8",
+  "resumo": {
+    "totalDias": 16,
+    "dataInicio": "2026-06-29",
+    "dataFim": "2026-07-14",
+    "totalKmRegistrado": 2091.0
+  },
+  "roteiroPorDia": [
+    {
+      "id": "dia-01",
+      "diaViagem": 1,
+      "data": "2026-06-29",
+      "dataOriginal": "29/06/26",
+      "diaSemana": "segunda-feira",
+      "cidadeManha": "",
+      "cidadeNoite": "São Paulo",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "",
+        "destino": "São Paulo",
+        "kms": "",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "Saída de SP",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "",
+        "link": "",
+        "jaPago": "",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-02",
+      "diaViagem": 2,
+      "data": "2026-06-30",
+      "dataOriginal": "30/06/26",
+      "diaSemana": "terça-feira",
+      "cidadeManha": "Milão",
+      "cidadeNoite": "Milão",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "Milão",
+        "destino": "Milão",
+        "kms": "0",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "Canova Hotel",
+        "link": "https://www.booking.com/hotel/it/canovahotel.pt-pt.html?label=gen173nr-10CAEoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4AuPbgdAGwAIB0gIkNjk0MThjYTQtZDBlZi00NmM0LThkMjktN2IxNTJkOWI2ODgy2AIB4AIB&aid=304142&ucfs=1&checkin=2026-06-30&checkout=2026-07-02&dest_id=-121726&dest_type=city&group_adults=5&no_rooms=3&group_children=0&nflt=review_score%3D80%3Bmealplan%3D1%3Bprice%3DBRL-min-5400-1%3Bht_id%3D204&srpvid=993651b8511b0183&srepoch=1778413771&matching_block_id=8022108_167616899_2_1_0&atlas_src=sr_iw_title",
+        "jaPago": "Sim",
+        "dataCobranca": "25/06",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-03",
+      "diaViagem": 3,
+      "data": "2026-07-01",
+      "dataOriginal": "01/07/26",
+      "diaSemana": "quarta-feira",
+      "cidadeManha": "Milão",
+      "cidadeNoite": "Milão",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "Milão",
+        "destino": "Milão",
+        "kms": "0",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "Canova Hotel",
+        "link": "https://www.booking.com/hotel/it/canovahotel.pt-pt.html?label=gen173nr-10CAEoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4AuPbgdAGwAIB0gIkNjk0MThjYTQtZDBlZi00NmM0LThkMjktN2IxNTJkOWI2ODgy2AIB4AIB&aid=304142&ucfs=1&checkin=2026-06-30&checkout=2026-07-02&dest_id=-121726&dest_type=city&group_adults=5&no_rooms=3&group_children=0&nflt=review_score%3D80%3Bmealplan%3D1%3Bprice%3DBRL-min-5400-1%3Bht_id%3D204&srpvid=993651b8511b0183&srepoch=1778413771&matching_block_id=8022108_167616899_2_1_0&atlas_src=sr_iw_title",
+        "jaPago": "Sim",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-04",
+      "diaViagem": 4,
+      "data": "2026-07-02",
+      "dataOriginal": "02/07/26",
+      "diaSemana": "quinta-feira",
+      "cidadeManha": "Milão",
+      "cidadeNoite": "Trieste",
+      "isDiaEstrada": true,
+      "deslocamento": {
+        "origem": "Milão",
+        "destino": "Trieste",
+        "kms": "416",
+        "tempoPrevisto": "04:43"
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "Mura 5&7",
+        "link": "https://www.booking.com/hotel/it/mura-5-amp-7.pt-br.html?aid=2311236&label=pt-br-booking-desktop-9_uvqir24qvA6x6xGiDvCQS652796015463%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9196327%3Ali%3Adec%3Adm&sid=b680f6e6cb2eaf0ca743a271931f5f56&all_sr_blocks=904256901_373017320_2_1_0_667174%2C904256901_373017320_2_1_0_667174%2C904256902_373017320_1_1_0_667174&checkin=2026-07-02&checkout=2026-07-03&dest_id=-131346&dest_type=city&dist=0&group_adults=5&group_children=0&hapos=8&highlighted_blocks=904256901_373017320_2_1_0_667174%2C904256901_373017320_2_1_0_667174%2C904256902_373017320_1_1_0_667174&hpos=8&matching_block_id=904256901_373017320_2_1_0_667174&nflt=hotelfacility%3D2%3Bht_id%3D204%3Breview_score%3D80%3Bmealplan%3D1&no_rooms=3&req_adults=5&req_children=0&room1=A&room2=A%2CA&room3=A%2CA&sb_price_type=total&sr_order=price&sr_pri_blocks=904256901_373017320_2_1_0_667174_18100%2C904256901_373017320_2_1_0_667174_18100%2C904256902_373017320_1_1_0_667174_14100&srepoch=1778418777&srpvid=38325c73156e0487&type=total&ucfs=1&#map_closed",
+        "jaPago": "Na hora",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-05",
+      "diaViagem": 5,
+      "data": "2026-07-03",
+      "dataOriginal": "03/07/26",
+      "diaSemana": "sexta-feira",
+      "cidadeManha": "Trieste",
+      "cidadeNoite": "Liubliana",
+      "isDiaEstrada": true,
+      "deslocamento": {
+        "origem": "Trieste",
+        "destino": "Liubliana",
+        "kms": "95",
+        "tempoPrevisto": "01:18"
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": "Postojna Cave\nyoutube.com/watch?v=CW6XmnLG3_0&pp=ygUOcG9zdG9uamlhIGNhdmU%3D"
+      },
+      "hotel": {
+        "nome": "City Hotel Ljubljana",
+        "link": "https://www.booking.com/hotel/si/cityhotelljubljana.pt-br.html?label=pt-br-booking-desktop-9_uvqir24qvA6x6xGiDvCQS652796015463%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9196327%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&checkin=2026-07-02&checkout=2026-07-03&group_adults=5&no_rooms=3&group_children=0&nflt=hotelfacility%3D2%3Bht_id%3D204&srpvid=be8b95cddff00470&srepoch=1776806479&matching_block_id=3950103_367480167_2_1_0&atlas_src=hp_iw_title",
+        "jaPago": "Na hora",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-06",
+      "diaViagem": 6,
+      "data": "2026-07-04",
+      "dataOriginal": "04/07/26",
+      "diaSemana": "sábado",
+      "cidadeManha": "Liubliana",
+      "cidadeNoite": "Budapeste",
+      "isDiaEstrada": true,
+      "deslocamento": {
+        "origem": "Liubliana",
+        "destino": "Budapeste",
+        "kms": "466",
+        "tempoPrevisto": "04:45"
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "Art Butik Hotel",
+        "link": "https://www.booking.com/hotel/hu/butik-art-design.pt-br.html?aid=356980&label=gen173nr-10CAEoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Avqrn88GwAIB0gIkM2FjZDk5YTYtMTMxYy00ZmVkLTk2NzItMjM3Y2RkYWI3NzAx2AIB4AIB-Share-TolOSg%401778424952&sid=b680f6e6cb2eaf0ca743a271931f5f56&all_sr_blocks=795677805_414943737_3_2_0_244255%2C795677801_414943737_2_2_0_244255&checkin=2026-07-04&checkout=2026-07-07&dest_id=-850553&dest_type=city&dist=0&group_adults=5&group_children=0&hapos=1&highlighted_blocks=795677805_414943737_3_2_0_244255%2C795677801_414943737_2_2_0_244255&hpos=1&matching_block_id=795677805_414943737_3_2_0_244255&no_rooms=3&req_adults=5&req_children=0&room1=A&room2=A%2CA&room3=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=795677805_414943737_3_2_0_244255_42980%2C795677801_414943737_2_2_0_244255_29542&srepoch=1778425100&srpvid=15c5693e403201aa&type=total&ucfs=1&",
+        "jaPago": "Sim",
+        "dataCobranca": "29/06",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-07",
+      "diaViagem": 7,
+      "data": "2026-07-05",
+      "dataOriginal": "05/07/26",
+      "diaSemana": "domingo",
+      "cidadeManha": "Budapeste",
+      "cidadeNoite": "Budapeste",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "Budapeste",
+        "destino": "Budapeste",
+        "kms": "0",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "Art Butik Hotel",
+        "link": "https://www.booking.com/hotel/hu/butik-art-design.pt-br.html?aid=356980&label=gen173nr-10CAEoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Avqrn88GwAIB0gIkM2FjZDk5YTYtMTMxYy00ZmVkLTk2NzItMjM3Y2RkYWI3NzAx2AIB4AIB-Share-TolOSg%401778424952&sid=b680f6e6cb2eaf0ca743a271931f5f56&all_sr_blocks=795677805_414943737_3_2_0_244255%2C795677801_414943737_2_2_0_244255&checkin=2026-07-04&checkout=2026-07-07&dest_id=-850553&dest_type=city&dist=0&group_adults=5&group_children=0&hapos=1&highlighted_blocks=795677805_414943737_3_2_0_244255%2C795677801_414943737_2_2_0_244255&hpos=1&matching_block_id=795677805_414943737_3_2_0_244255&no_rooms=3&req_adults=5&req_children=0&room1=A&room2=A%2CA&room3=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=795677805_414943737_3_2_0_244255_42980%2C795677801_414943737_2_2_0_244255_29542&srepoch=1778425100&srpvid=15c5693e403201aa&type=total&ucfs=1&",
+        "jaPago": "Sim",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-08",
+      "diaViagem": 8,
+      "data": "2026-07-06",
+      "dataOriginal": "06/07/26",
+      "diaSemana": "segunda-feira",
+      "cidadeManha": "Budapeste",
+      "cidadeNoite": "Budapeste",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "Budapeste",
+        "destino": "Budapeste",
+        "kms": "0",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "Art Butik Hotel",
+        "link": "https://www.booking.com/hotel/hu/butik-art-design.pt-br.html?aid=356980&label=gen173nr-10CAEoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Avqrn88GwAIB0gIkM2FjZDk5YTYtMTMxYy00ZmVkLTk2NzItMjM3Y2RkYWI3NzAx2AIB4AIB-Share-TolOSg%401778424952&sid=b680f6e6cb2eaf0ca743a271931f5f56&all_sr_blocks=795677805_414943737_3_2_0_244255%2C795677801_414943737_2_2_0_244255&checkin=2026-07-04&checkout=2026-07-07&dest_id=-850553&dest_type=city&dist=0&group_adults=5&group_children=0&hapos=1&highlighted_blocks=795677805_414943737_3_2_0_244255%2C795677801_414943737_2_2_0_244255&hpos=1&matching_block_id=795677805_414943737_3_2_0_244255&no_rooms=3&req_adults=5&req_children=0&room1=A&room2=A%2CA&room3=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=795677805_414943737_3_2_0_244255_42980%2C795677801_414943737_2_2_0_244255_29542&srepoch=1778425100&srpvid=15c5693e403201aa&type=total&ucfs=1&",
+        "jaPago": "Sim",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-09",
+      "diaViagem": 9,
+      "data": "2026-07-07",
+      "dataOriginal": "07/07/26",
+      "diaSemana": "terça-feira",
+      "cidadeManha": "Budapeste",
+      "cidadeNoite": "Viena",
+      "isDiaEstrada": true,
+      "deslocamento": {
+        "origem": "Budapeste",
+        "destino": "Viena",
+        "kms": "250",
+        "tempoPrevisto": "02:46"
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "The Weekend Hotel",
+        "link": "https://www.booking.com/hotel/at/allalenz.pt-br.html?label=pt-br-booking-desktop-9_uvqir24qvA6x6xGiDvCQS652796015463%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9196327%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&checkin=2026-07-07&checkout=2026-07-10&dest_id=-1995499&dest_type=city&group_adults=5&no_rooms=3&group_children=0&nflt=hotelfacility%3D2%3Bht_id%3D204%3Breview_score%3D90&srpvid=9424991f90e800bd&srepoch=1777844851&matching_block_id=7014120_363403654_2_2_0&atlas_src=sr_iw_title",
+        "jaPago": "Na hora",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-10",
+      "diaViagem": 10,
+      "data": "2026-07-08",
+      "dataOriginal": "08/07/26",
+      "diaSemana": "quarta-feira",
+      "cidadeManha": "Viena",
+      "cidadeNoite": "Viena",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "Viena",
+        "destino": "Viena",
+        "kms": "0",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "The Weekend Hotel",
+        "link": "https://www.booking.com/hotel/at/allalenz.pt-br.html?label=pt-br-booking-desktop-9_uvqir24qvA6x6xGiDvCQS652796015463%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9196327%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&checkin=2026-07-07&checkout=2026-07-10&dest_id=-1995499&dest_type=city&group_adults=5&no_rooms=3&group_children=0&nflt=hotelfacility%3D2%3Bht_id%3D204%3Breview_score%3D90&srpvid=9424991f90e800bd&srepoch=1777844851&matching_block_id=7014120_363403654_2_2_0&atlas_src=sr_iw_title",
+        "jaPago": "Na hora",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-11",
+      "diaViagem": 11,
+      "data": "2026-07-09",
+      "dataOriginal": "09/07/26",
+      "diaSemana": "quinta-feira",
+      "cidadeManha": "Viena",
+      "cidadeNoite": "Viena",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "Viena",
+        "destino": "Viena",
+        "kms": "0",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "The Weekend Hotel",
+        "link": "https://www.booking.com/hotel/at/allalenz.pt-br.html?label=pt-br-booking-desktop-9_uvqir24qvA6x6xGiDvCQS652796015463%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-65526620%3Alp9196327%3Ali%3Adec%3Adm&aid=2311236&ucfs=1&checkin=2026-07-07&checkout=2026-07-10&dest_id=-1995499&dest_type=city&group_adults=5&no_rooms=3&group_children=0&nflt=hotelfacility%3D2%3Bht_id%3D204%3Breview_score%3D90&srpvid=9424991f90e800bd&srepoch=1777844851&matching_block_id=7014120_363403654_2_2_0&atlas_src=sr_iw_title",
+        "jaPago": "Na hora",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-12",
+      "diaViagem": 12,
+      "data": "2026-07-10",
+      "dataOriginal": "10/07/26",
+      "diaSemana": "sexta-feira",
+      "cidadeManha": "Viena",
+      "cidadeNoite": "Hallstatt",
+      "isDiaEstrada": true,
+      "deslocamento": {
+        "origem": "Viena",
+        "destino": "Hallstatt",
+        "kms": "276",
+        "tempoPrevisto": "03:10"
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "Seehotel am Hallstättersee",
+        "link": "https://www.booking.com/hotel/at/seehotel-am-hallstattersee.pt-br.html?label=gen173nr-10CAEoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Ap2xtc8GwAIB0gIkMThiMTk3OTUtZThiYy00YzFiLTllNzctNGY0MTgyOWFmNGI52AIB4AIB&aid=356980&ucfs=1&checkin=2026-07-10&checkout=2026-07-11&dest_id=-1979686&dest_type=city&group_adults=5&no_rooms=3&group_children=0&nflt=review_score%3D80%3Bhotelfacility%3D2%3Bht_id%3D204%3Bmealplan%3D1&srpvid=11f773e6075605e8&srepoch=1778430573&matching_block_id=7368201_358194890_0_1_0&atlas_src=sr_iw_title#_",
+        "jaPago": "Sim",
+        "dataCobranca": "23/06",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-13",
+      "diaViagem": 13,
+      "data": "2026-07-11",
+      "dataOriginal": "11/07/26",
+      "diaSemana": "sábado",
+      "cidadeManha": "Hallstatt",
+      "cidadeNoite": "Caprile",
+      "isDiaEstrada": true,
+      "deslocamento": {
+        "origem": "Hallstatt",
+        "destino": "Caprile",
+        "kms": "302",
+        "tempoPrevisto": "04:28"
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "Hotel Alla Posta - Famiglia Pra dal 1866 a Caprile",
+        "link": "https://www.booking.com/hotel/it/alla-posta-alleghe.pt-br.html?aid=356980&label=gen173nr-10CAEoggI46AdIM1gEaCCIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4Ap2xtc8GwAIB0gIkMThiMTk3OTUtZThiYy00YzFiLTllNzctNGY0MTgyOWFmNGI52AIB4AIB&sid=b680f6e6cb2eaf0ca743a271931f5f56&all_sr_blocks=32533406_327158983_0_41_0%2C32533406_327158983_0_41_0%2C32533413_327158983_0_41_0&checkin=2026-07-11&checkout=2026-07-12&dest_id=-113230&dest_type=city&dist=0&group_adults=5&group_children=0&hapos=1&highlighted_blocks=32533406_327158983_0_41_0%2C32533406_327158983_0_41_0%2C32533413_327158983_0_41_0&hpos=1&matching_block_id=32533406_327158983_0_41_0&nflt=review_score%3D80%3Bhotelfacility%3D2%3Bht_id%3D204%3Bmealplan%3D1&no_rooms=3&req_adults=5&req_children=0&room1=A&room2=A%2CA&room3=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=32533406_327158983_0_41_0__14220%2C32533406_327158983_0_41_0__14220%2C32533413_327158983_0_41_0__12500&srepoch=1778439842&srpvid=a6f18608faa700bb&type=total&ucfs=1&",
+        "jaPago": "Sim",
+        "dataCobranca": "24/06",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-14",
+      "diaViagem": 14,
+      "data": "2026-07-12",
+      "dataOriginal": "12/07/26",
+      "diaSemana": "domingo",
+      "cidadeManha": "Caprile",
+      "cidadeNoite": "Milão",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "Caprile",
+        "destino": "Milão",
+        "kms": "0",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "IH Hotels Milano Centrale",
+        "link": "https://www.booking.com/Share-DnJGZHa",
+        "jaPago": "Sim",
+        "dataCobranca": "07/07",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-15",
+      "diaViagem": 15,
+      "data": "2026-07-13",
+      "dataOriginal": "13/07/26",
+      "diaSemana": "segunda-feira",
+      "cidadeManha": "Milão",
+      "cidadeNoite": "Milão",
+      "isDiaEstrada": true,
+      "deslocamento": {
+        "origem": "Milão",
+        "destino": "Milão",
+        "kms": "286",
+        "tempoPrevisto": "03:15"
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "IH Hotels Milano Centrale",
+        "link": "https://www.booking.com/Share-DnJGZHa",
+        "jaPago": "Sim",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    },
+    {
+      "id": "dia-16",
+      "diaViagem": 16,
+      "data": "2026-07-14",
+      "dataOriginal": "14/07/26",
+      "diaSemana": "terça-feira",
+      "cidadeManha": "Milão",
+      "cidadeNoite": "Viagem",
+      "isDiaEstrada": false,
+      "deslocamento": {
+        "origem": "Milão",
+        "destino": "Viagem",
+        "kms": "0",
+        "tempoPrevisto": ""
+      },
+      "passeios": {
+        "manha": "",
+        "tarde": "",
+        "reservados": ""
+      },
+      "hotel": {
+        "nome": "",
+        "link": "https://www.booking.com/Share-DnJGZHa",
+        "jaPago": "",
+        "dataCobranca": "",
+        "quemPagou": ""
+      },
+      "guias": "",
+      "restaurantes": ""
+    }
+  ],
+  "cidades": [
+    {
+      "id": "milao",
+      "nome": "Milão",
+      "dias": [
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-12",
+        "2026-07-13",
+        "2026-07-14"
+      ],
+      "hoteis": [
+        "Canova Hotel",
+        "IH Hotels Milano Centrale",
+        "Mura 5&7"
+      ],
+      "passeios": []
+    },
+    {
+      "id": "trieste",
+      "nome": "Trieste",
+      "dias": [
+        "2026-07-02",
+        "2026-07-03"
+      ],
+      "hoteis": [
+        "City Hotel Ljubljana",
+        "Mura 5&7"
+      ],
+      "passeios": [
+        "Postojna Cave\nyoutube.com/watch?v=CW6XmnLG3_0&pp=ygUOcG9zdG9uamlhIGNhdmU%3D"
+      ]
+    },
+    {
+      "id": "liubliana",
+      "nome": "Liubliana",
+      "dias": [
+        "2026-07-03",
+        "2026-07-04"
+      ],
+      "hoteis": [
+        "Art Butik Hotel",
+        "City Hotel Ljubljana"
+      ],
+      "passeios": [
+        "Postojna Cave\nyoutube.com/watch?v=CW6XmnLG3_0&pp=ygUOcG9zdG9uamlhIGNhdmU%3D"
+      ]
+    },
+    {
+      "id": "budapeste",
+      "nome": "Budapeste",
+      "dias": [
+        "2026-07-04",
+        "2026-07-05",
+        "2026-07-06",
+        "2026-07-07"
+      ],
+      "hoteis": [
+        "Art Butik Hotel",
+        "The Weekend Hotel"
+      ],
+      "passeios": []
+    },
+    {
+      "id": "viena",
+      "nome": "Viena",
+      "dias": [
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10"
+      ],
+      "hoteis": [
+        "Seehotel am Hallstättersee",
+        "The Weekend Hotel"
+      ],
+      "passeios": []
+    },
+    {
+      "id": "hallstatt",
+      "nome": "Hallstatt",
+      "dias": [
+        "2026-07-10",
+        "2026-07-11"
+      ],
+      "hoteis": [
+        "Hotel Alla Posta - Famiglia Pra dal 1866 a Caprile",
+        "Seehotel am Hallstättersee"
+      ],
+      "passeios": []
+    },
+    {
+      "id": "caprile",
+      "nome": "Caprile",
+      "dias": [
+        "2026-07-11",
+        "2026-07-12"
+      ],
+      "hoteis": [
+        "Hotel Alla Posta - Famiglia Pra dal 1866 a Caprile",
+        "IH Hotels Milano Centrale"
+      ],
+      "passeios": []
+    }
+  ]
+}
