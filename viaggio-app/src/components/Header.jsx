@@ -1,15 +1,17 @@
 import Icon from './Icon'
 import { diasAte } from '../data/data'
 
+const INITIALS = { "Fernando":"FE", "Ana Paula":"AP", "Mariana":"MA", "Pedro":"PE", "Marina":"MI" }
+
 const NAV = [
   { id: "sec-roteiro", label: "Roteiro", icon: "route" },
-  { id: "sec-mapa", label: "Mapa", icon: "map" },
-  { id: "sec-hoteis", label: "Hotéis", icon: "bed" },
+  { id: "sec-mapa",    label: "Mapa",    icon: "map" },
+  { id: "sec-hoteis",  label: "Hotéis",  icon: "bed" },
   { id: "sec-sugestoes", label: "Sugestões", icon: "thumb" },
-  { id: "sec-links", label: "Links", icon: "sheet" },
+  { id: "sec-links",   label: "Links",   icon: "sheet" },
 ]
 
-export default function Header({ query, setQuery, onNav }) {
+export default function Header({ query, setQuery, onNav, user, onSwitchUser }) {
   const falta = diasAte("2026-06-29")
   return (
     <header className="hdr">
@@ -18,9 +20,17 @@ export default function Header({ query, setQuery, onNav }) {
           <div className="brand">VIAGGIO<span className="dot">.</span></div>
           <div className="brand-sub">Roteiro da viagem</div>
         </div>
-        <div className="hdr-stamp">
-          <Icon name="plane" size={13} />
-          {falta > 0 ? <>faltam <b>{falta}d</b></> : <b>em viagem</b>}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
+          <div className="hdr-stamp">
+            <Icon name="plane" size={13} />
+            {falta > 0 ? <>faltam <b>{falta}d</b></> : <b>em viagem</b>}
+          </div>
+          {user && (
+            <button className="user-badge" onClick={onSwitchUser} title="Trocar usuário">
+              <span className="user-badge-avatar">{INITIALS[user] || user.slice(0,2).toUpperCase()}</span>
+              {user}
+            </button>
+          )}
         </div>
       </div>
       <div className="search" role="search">

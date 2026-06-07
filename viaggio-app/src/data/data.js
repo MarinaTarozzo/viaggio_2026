@@ -196,6 +196,51 @@ export const links = [
   { titulo: "Mapa da viagem", desc: "Rota completa no Google Maps", icone: "map", url: MAPA_URL },
 ];
 
+/* ---- Fotos reais via Unsplash (fallback ao placeholder se falhar) ---- */
+export const CITY_PHOTOS = {
+  milao:     "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=800&q=80",
+  trieste:   "https://images.unsplash.com/photo-1598266849069-b74a7b52c498?auto=format&fit=crop&w=800&q=80",
+  liubliana: "https://images.unsplash.com/photo-1592580131697-fd60d5ba7742?auto=format&fit=crop&w=800&q=80",
+  budapeste: "https://images.unsplash.com/photo-1549893072-4bc678117f45?auto=format&fit=crop&w=800&q=80",
+  viena:     "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80",
+  hallstatt: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
+  caprile:   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+}
+
+/* ---- Próxima parada dinâmica (baseada na data de hoje) ---- */
+export function getNextStop() {
+  const hoje = new Date()
+  hoje.setHours(0, 0, 0, 0)
+  const startDate = parseISO("2026-06-29")
+  const endDate   = parseISO("2026-07-14")
+
+  if (hoje < startDate) {
+    return {
+      type: 'pre',
+      cidade: cidadePorId['milao'],
+      dia: null,
+      faltam: Math.round((startDate - hoje) / 86400000),
+      label: 'Próxima parada',
+    }
+  }
+
+  if (hoje > endDate) return { type: 'done' }
+
+  const todayStr = hoje.toISOString().slice(0, 10)
+  const diaHoje  = dias.find(d => d.data === todayStr)
+  if (!diaHoje) return { type: 'pre', cidade: cidadePorId['milao'], dia: null, faltam: 0, label: 'Próxima parada' }
+
+  if (diaHoje.tipo === 'retorno') return { type: 'retorno', dia: diaHoje, label: 'Volta para casa' }
+  if (diaHoje.tipo === 'partida') return { type: 'partida', dia: diaHoje, label: 'Dia de embarque' }
+
+  return {
+    type: diaHoje.tipo,
+    dia: diaHoje,
+    cidade: cidadePorId[diaHoje.cidadeId],
+    label: diaHoje.tipo === 'estrada' ? 'Hoje tem estrada!' : 'Onde estamos hoje',
+  }
+}
+
 export const categorias = [
   "Restaurante","Café / doce","Museu","Loja","Vista bonita",
   "Experiência","Passeio ao ar livre","Parada de estrada","Outro",

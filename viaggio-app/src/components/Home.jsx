@@ -31,7 +31,7 @@ export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMa
 
       <section className="block">
         <SectionHead num="01" title="Próxima parada" />
-        <NextStop onOpen={() => onOpenCity("milao")} onMap={onMap} />
+        <NextStop onOpenCity={onOpenCity} onMap={onMap} />
       </section>
 
       <section className="block" id="sec-mapa">

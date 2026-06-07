@@ -1,8 +1,10 @@
 import Icon from './Icon'
 import Stars from './Stars'
 import Photo from './Photo'
+import { CITY_PHOTOS } from '../data/data'
 
 export default function CityHero({ cidade, variant = "editorial", rating, onRate }) {
+  const photoSrc = CITY_PHOTOS[cidade.id]
   const Info = (
     <>
       <div className="flag-line" style={{ marginBottom: 6, flexWrap: "nowrap", whiteSpace: "nowrap" }}>
@@ -28,7 +30,7 @@ export default function CityHero({ cidade, variant = "editorial", rating, onRate
   if (variant === "postal") {
     return (
       <div className="card" style={{ overflow: "hidden", borderWidth: 2 }}>
-        <div style={{ borderBottom: "1.5px dashed var(--line)" }}><Photo label={cidade.nome} h={150} /></div>
+        <div style={{ borderBottom: "1.5px dashed var(--line)" }}><Photo label={cidade.nome} h={150} src={photoSrc} /></div>
         <div style={{ padding: "16px 18px" }}>{Info}</div>
       </div>
     )
@@ -36,7 +38,7 @@ export default function CityHero({ cidade, variant = "editorial", rating, onRate
 
   return (
     <div className="card" style={{ overflow: "hidden" }}>
-      <Photo label={cidade.nome} h={160} />
+      <Photo label={cidade.nome} h={200} src={photoSrc} />
       <div style={{ padding: "16px 18px" }}>{Info}</div>
     </div>
   )

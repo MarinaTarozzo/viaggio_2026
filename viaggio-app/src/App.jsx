@@ -4,16 +4,13 @@ import Home from './components/Home'
 import CityDetail from './components/CityDetail'
 import SuggestionForm from './components/SuggestionForm'
 import ConfirmDialog from './components/ConfirmDialog'
+import LoginScreen from './components/LoginScreen'
 import Icon from './components/Icon'
-import { sugestoesIniciais, MAPA_URL } from './data/data'
-
-const DEFAULTS = {
-  timelineStyle: "compacto",
-  cardStyle: "editorial",
-  base: 22,
-}
+import { useViaggio } from './hooks/useViaggio'
+import { MAPA_URL } from './data/data'
 
 export default function App() {
+  const [user, setUser] = useState(() => localStorage.getItem('viaggio_user') || '')
   const [view, setView] = useState("home")
   const [activeCity, setActiveCity] = useState(null)
   const [query, setQuery] = useState("")
@@ -22,13 +19,12 @@ export default function App() {
   const [editing, setEditing] = useState(null)
   const [pendingDel, setPendingDel] = useState(null)
   const [showTop, setShowTop] = useState(false)
-  const [sugg, setSugg] = useState(() => sugestoesIniciais.map(s => ({ ...s, voted: false, visitado: false })))
-  const [ratings, setRatings] = useState({})
-  const [tweaks] = useState(DEFAULTS)
+
+  const { sugg, ratings, loading, onVote, rate, saveSug, deleteSug, toggleVisited } = useViaggio(user)
 
   useEffect(() => {
-    document.documentElement.style.setProperty("--base", tweaks.base + "px")
-  }, [tweaks.base])
+    document.documentElement.style.setProperty("--base", "22px")
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 520)
@@ -37,11 +33,24 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
+  /* ---- login / logout ---- */
+  const login = (name) => {
+    localStorage.setItem('viaggio_user', name)
+    setUser(name)
+  }
+  const switchUser = () => {
+    localStorage.removeItem('viaggio_user')
+    setUser('')
+    setView('home')
+    setActiveCity(null)
+  }
+
+  if (!user) return <LoginScreen onLogin={login} />
+
+  /* ---- navigation ---- */
   const openCity = (id) => { setActiveCity(id); setView("city"); window.scrollTo(0, 0) }
   const goHome = () => { setView("home"); setActiveCity(null) }
   const onMap = () => window.open(MAPA_URL, "_blank")
-  const rate = (key, v) => setRatings(r => ({ ...r, [key]: v }))
-  const onVote = (id) => setSugg(list => list.map(s => s.id === id ? { ...s, voted: !s.voted, votos: s.votos + (s.voted ? -1 : 1) } : s))
 
   const navTo = (id) => {
     const doScroll = () => {
@@ -55,32 +64,52 @@ export default function App() {
     else doScroll()
   }
 
-  const onSaveSug = (f, id) => {
-    if (id) {
-      setSugg(list => list.map(s => s.id === id ? { ...s, ...f } : s))
-    } else {
-      setSugg(list => [{ id: "u" + Date.now(), ...f, votos: 1, voted: true, visitado: false }, ...list])
-    }
+  /* ---- suggestion CRUD ---- */
+  const onSaveSug = async (f, id) => {
+    await saveSug(f, id)
+    closeForm()
   }
-
   const onDeleteSug = (id) => { const s = sugg.find(x => x.id === id); setPendingDel(s || null) }
-  const confirmDelete = () => { if (pendingDel) setSugg(list => list.filter(x => x.id !== pendingDel.id)); setPendingDel(null) }
-  const onVisited = (id) => setSugg(list => list.map(s => s.id === id ? { ...s, visitado: !s.visitado } : s))
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
+  const confirmDelete = async () => {
+    if (pendingDel) { await deleteSug(pendingDel.id); setPendingDel(null) }
+  }
   const openEdit = (s) => setEditing(s)
   const closeForm = () => { setShowAdd(false); setEditing(null) }
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
 
-  const sharedProps = { sugg, onVote, rate, ratings, onEdit: openEdit, onDelete: onDeleteSug, onVisited }
+  const sharedProps = {
+    sugg, onVote, rate, ratings,
+    onEdit: openEdit, onDelete: onDeleteSug, onVisited: toggleVisited,
+  }
+
+  /* ---- loading state ---- */
+  if (loading) {
+    return (
+      <div className="page">
+        <div className="device">
+          <div className="loading-wrap">
+            <div className="spinner" />
+            <p className="muted" style={{ fontSize: ".9rem" }}>Carregando roteiro…</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="page">
       <div className="device">
-        {view === "home" && <Header query={query} setQuery={setQuery} onNav={navTo} />}
+        {view === "home" && (
+          <Header
+            query={query} setQuery={setQuery} onNav={navTo}
+            user={user} onSwitchUser={switchUser}
+          />
+        )}
 
         {view === "home"
           ? <Home
-              cardStyle={tweaks.cardStyle}
-              timelineStyle={tweaks.timelineStyle}
+              cardStyle="editorial"
+              timelineStyle="compacto"
               query={query}
               onOpenCity={openCity}
               onMap={onMap}
@@ -90,7 +119,7 @@ export default function App() {
             />
           : <CityDetail
               id={activeCity}
-              cardStyle={tweaks.cardStyle}
+              cardStyle="editorial"
               onBack={goHome}
               onMap={onMap}
               onOpenCity={openCity}
