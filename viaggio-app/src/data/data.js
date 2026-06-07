@@ -22,9 +22,11 @@ export const cidades = [
     stays: [
       { hotel: "Canova Hotel", periodo: "30 jun – 2 jul", status: "pago", cobranca: "25/06",
         endereco: "Via Giulio Uberti, 6 — Milão", link: "https://www.booking.com/hotel/it/canovahotel.pt-pt.html",
+        mapsUrl: "https://maps.google.com/?q=Canova+Hotel+Via+Giulio+Uberti+6+Milano",
         obs: "Pagamento confirmado em 25/06. 3 quartos." },
       { hotel: "IH Hotels Milano Centrale", periodo: "12 – 14 jul", status: "pago", cobranca: "07/07",
         endereco: "Via Napo Torriani — Milão", link: "https://www.booking.com/Share-DnJGZHa",
+        mapsUrl: "https://maps.google.com/?q=IH+Hotels+Milano+Centrale+Via+Napo+Torriani+Milano",
         obs: "Última base antes do voo de volta." },
     ],
     passeios: [
@@ -40,6 +42,7 @@ export const cidades = [
     stays: [
       { hotel: "Mura 5&7", periodo: "2 – 3 jul", status: "verificar", cobranca: "",
         endereco: "Centro histórico — Trieste", link: "https://www.booking.com/hotel/it/mura-5-amp-7.pt-br.html",
+        mapsUrl: "https://maps.google.com/?q=Mura+5+7+Trieste+Italy",
         obs: "Pagamento na chegada. Confirmar valor no check-in." },
     ],
     passeios: [{ nome: "Piazza Unità d'Italia", categoria: "Vista bonita" }],
@@ -52,6 +55,7 @@ export const cidades = [
     stays: [
       { hotel: "City Hotel Ljubljana", periodo: "3 – 4 jul", status: "verificar", cobranca: "",
         endereco: "Dalmatinova ulica — Liubliana", link: "https://www.booking.com/hotel/si/cityhotelljubljana.pt-br.html",
+        mapsUrl: "https://maps.google.com/?q=City+Hotel+Ljubljana+Dalmatinova",
         obs: "Pagamento na chegada." },
     ],
     passeios: [
@@ -68,6 +72,7 @@ export const cidades = [
     stays: [
       { hotel: "Art Butik Hotel", periodo: "4 – 7 jul", status: "pago", cobranca: "29/06",
         endereco: "Distrito VII — Budapeste", link: "https://www.booking.com/hotel/hu/butik-art-design.pt-br.html",
+        mapsUrl: "https://maps.google.com/?q=Art+Butik+Hotel+Budapest+District+VII",
         obs: "Pago em 29/06. 3 quartos, 3 noites." },
     ],
     passeios: [
@@ -83,6 +88,7 @@ export const cidades = [
     stays: [
       { hotel: "The Weekend Hotel", periodo: "7 – 10 jul", status: "verificar", cobranca: "",
         endereco: "Viena — Áustria", link: "https://www.booking.com/hotel/at/allalenz.pt-br.html",
+        mapsUrl: "https://maps.google.com/?q=The+Weekend+Hotel+Vienna+Austria",
         obs: "Pagamento na chegada. Nota de avaliação alta (90+)." },
     ],
     passeios: [
@@ -98,6 +104,7 @@ export const cidades = [
     stays: [
       { hotel: "Seehotel am Hallstättersee", periodo: "10 – 11 jul", status: "pago", cobranca: "23/06",
         endereco: "À beira do lago — Hallstatt", link: "https://www.booking.com/hotel/at/seehotel-am-hallstattersee.pt-br.html",
+        mapsUrl: "https://maps.google.com/?q=Seehotel+am+Hallstattersee+Hallstatt+Austria",
         obs: "Pago em 23/06. Vista para o lago." },
     ],
     passeios: [{ nome: "Skywalk & mirante do lago", categoria: "Vista bonita" }],
@@ -110,6 +117,7 @@ export const cidades = [
     stays: [
       { hotel: "Hotel Alla Posta — Famiglia Pra (1866)", periodo: "11 – 12 jul", status: "pago", cobranca: "24/06",
         endereco: "Caprile / Alleghe — Dolomitas", link: "https://www.booking.com/hotel/it/alla-posta-alleghe.pt-br.html",
+        mapsUrl: "https://maps.google.com/?q=Hotel+Alla+Posta+Alleghe+Caprile+Dolomitas",
         obs: "Pago em 24/06. Hotel histórico de família." },
     ],
     passeios: [{ nome: "Lago di Alleghe ao pôr do sol", categoria: "Vista bonita" }],

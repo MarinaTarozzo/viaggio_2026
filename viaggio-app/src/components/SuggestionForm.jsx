@@ -5,7 +5,8 @@ import { cidades, categorias, resumo } from '../data/data'
 export default function SuggestionForm({ onClose, onSave, initial }) {
   const isEdit = !!initial
   const [f, setF] = useState(initial || {
-    nome: "", categoria: categorias[0], cidadeId: cidades[0].id, quem: "Você", motivo: "", link: "",
+    nome: "", categoria: categorias[0], cidadeId: cidades[0].id, quem: "Você",
+    motivo: "", link: "", periodo: "Qualquer hora", reservar: false,
   })
   const up = (k, v) => setF(s => ({ ...s, [k]: v }))
   const submit = (e) => {
@@ -48,6 +49,21 @@ export default function SuggestionForm({ onClose, onSave, initial }) {
             <select value={f.quem} onChange={e => up("quem", e.target.value)}>
               {["Você", ...resumo.pessoas].map(p => <option key={p}>{p}</option>)}
             </select>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <div className="field">
+              <label>Período do dia</label>
+              <select value={f.periodo || "Qualquer hora"} onChange={e => up("periodo", e.target.value)}>
+                {["Qualquer hora", "Manhã", "Tarde", "Noite"].map(p => <option key={p}>{p}</option>)}
+              </select>
+            </div>
+            <div className="field">
+              <label>Reservar / ingressos</label>
+              <select value={f.reservar ? "Sim" : "Não"} onChange={e => up("reservar", e.target.value === "Sim")}>
+                <option>Não</option>
+                <option>Sim</option>
+              </select>
+            </div>
           </div>
           <div className="field">
             <label>Motivo (opcional)</label>

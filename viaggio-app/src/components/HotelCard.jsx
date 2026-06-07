@@ -9,9 +9,14 @@ export default function HotelCard({ stay, cidade, variant = "editorial", onMaps,
       <a className="btn btn--solid btn--sm" href={stay.link} target="_blank" rel="noopener noreferrer" style={{ width: "auto" }}>
         <Icon name="external" size={17} /> Abrir reserva
       </a>
-      <button className="btn btn--sm" style={{ width: "auto" }} onClick={onMaps}>
-        <Icon name="pin" size={17} /> Mapa
-      </button>
+      {stay.mapsUrl
+        ? <a className="btn btn--sm" href={stay.mapsUrl} target="_blank" rel="noopener noreferrer" style={{ width: "auto" }}>
+            <Icon name="pin" size={17} /> Mapa
+          </a>
+        : <button className="btn btn--sm" style={{ width: "auto" }} onClick={onMaps}>
+            <Icon name="pin" size={17} /> Mapa
+          </button>
+      }
     </div>
   )
   const Meta = (

@@ -23,6 +23,14 @@ export default function SuggestionCard({ s, onVote, onRate, rating, onEdit, onDe
             )}
             <span className="chip chip--cat">{s.categoria}</span>
             <span className="chip chip--cat" style={{ color: "var(--ocean)", borderColor: "var(--ocean)" }}>{cidade ? cidade.nome : ""}</span>
+            {s.periodo && s.periodo !== "Qualquer hora" && (
+              <span className="chip chip--cat">{s.periodo}</span>
+            )}
+            {s.reservar && (
+              <span className="chip chip--cat" style={{ color: "var(--solar-deep)", borderColor: "var(--solar-deep)", background: "rgba(180,90,20,.08)" }}>
+                Reserva necessária
+              </span>
+            )}
           </div>
           <h3 className="title" style={{ fontSize: "1.3rem", lineHeight: 1.12 }}>{s.nome}</h3>
         </div>

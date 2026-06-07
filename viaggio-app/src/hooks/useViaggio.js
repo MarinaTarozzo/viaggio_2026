@@ -103,12 +103,14 @@ export function useViaggio(userName) {
       await supabase.from('suggestions').update({
         nome: f.nome, categoria: f.categoria, cidade_id: f.cidadeId,
         quem: f.quem, motivo: f.motivo || '', link: f.link || '',
+        periodo: f.periodo || '', reservar: f.reservar || false,
       }).eq('id', id)
     } else {
       const newId = 'u' + Date.now()
       await supabase.from('suggestions').insert({
         id: newId, nome: f.nome, categoria: f.categoria, cidade_id: f.cidadeId,
         quem: f.quem, motivo: f.motivo || '', link: f.link || '', visitado: false,
+        periodo: f.periodo || '', reservar: f.reservar || false,
       })
       await supabase.from('votes').insert({ suggestion_id: newId, user_name: userName })
     }

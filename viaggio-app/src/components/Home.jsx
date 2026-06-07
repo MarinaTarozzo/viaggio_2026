@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Icon from './Icon'
 import SectionHead from './SectionHead'
 import NextStop from './NextStop'
@@ -6,18 +7,30 @@ import Timeline from './Timeline'
 import HotelCard from './HotelCard'
 import SuggestionCard from './SuggestionCard'
 import UsefulLinks from './UsefulLinks'
-import { cidades, resumo } from '../data/data'
+import { cidades, resumo, cidadePorId } from '../data/data'
 
 export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMap, sugg, onVote, rate, ratings, catFilter, setCatFilter, onEdit, onDelete, onVisited }) {
+  const [cityFilter, setCityFilter] = useState("todas")
+  const [sortBy, setSortBy] = useState("votos")
+
   const q = query.trim().toLowerCase()
-  let visSugg = [...sugg].sort((a, b) => (a.visitado - b.visitado) || (b.votos - a.votos))
+  const cats = ["todas", ...Array.from(new Set(sugg.map(s => s.categoria)))]
+  const suggCities = Array.from(new Set(sugg.map(s => s.cidadeId).filter(Boolean)))
+
+  let visSugg = [...sugg]
+  if (sortBy === "votos") {
+    visSugg.sort((a, b) => (a.visitado - b.visitado) || (b.votos - a.votos))
+  } else {
+    visSugg.sort((a, b) => (a.visitado - b.visitado) || (b.created_at > a.created_at ? 1 : -1))
+  }
   if (catFilter !== "todas") visSugg = visSugg.filter(s => s.categoria === catFilter)
+  if (cityFilter !== "todas") visSugg = visSugg.filter(s => s.cidadeId === cityFilter)
   if (q) visSugg = visSugg.filter(s =>
     s.nome.toLowerCase().includes(q) ||
     s.quem.toLowerCase().includes(q) ||
     (s.cidadeId && s.cidadeId.includes(q))
   )
-  const cats = ["todas", ...Array.from(new Set(sugg.map(s => s.categoria)))]
+
   const stays = []
   cidades.forEach(c => c.stays.forEach(s => stays.push({ ...s, cidade: c.nome })))
 
@@ -68,17 +81,41 @@ export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMa
       </section>
 
       <section className="block" id="sec-sugestoes">
-        <SectionHead num="05" title="Sugestões da família" />
+        <SectionHead num="05" title="Sugestões de passeio" />
         <p className="muted" style={{ margin: "-6px 0 14px", fontSize: ".9rem" }}>
-          Mais votadas pela família — vote e avalie depois da visita.
+          Vote e avalie depois da visita.
         </p>
-        <div className="chips" style={{ marginBottom: 16, overflowX: "auto", flexWrap: "nowrap", paddingBottom: 4 }}>
+
+        <div className="chips" style={{ marginBottom: 8, overflowX: "auto", flexWrap: "nowrap", paddingBottom: 2 }}>
           {cats.map(c => (
             <button key={c} className="chip" aria-pressed={catFilter === c} onClick={() => setCatFilter(c)}
               style={{ textTransform: c === "todas" ? "uppercase" : "none", letterSpacing: c === "todas" ? ".06em" : 0 }}>
               {c}
             </button>
           ))}
+        </div>
+
+        {suggCities.length > 1 && (
+          <div className="chips" style={{ marginBottom: 8, overflowX: "auto", flexWrap: "nowrap", paddingBottom: 2 }}>
+            <button className="chip" aria-pressed={cityFilter === "todas"} onClick={() => setCityFilter("todas")}
+              style={{ textTransform: "uppercase", letterSpacing: ".06em" }}>
+              Todas as cidades
+            </button>
+            {suggCities.map(id => (
+              <button key={id} className="chip" aria-pressed={cityFilter === id} onClick={() => setCityFilter(id)}>
+                {cidadePorId[id]?.nome || id}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className="chips" style={{ marginBottom: 16, paddingBottom: 2 }}>
+          <button className="chip" aria-pressed={sortBy === "votos"} onClick={() => setSortBy("votos")}>
+            <Icon name="thumb" size={14} /> Mais curtidos
+          </button>
+          <button className="chip" aria-pressed={sortBy === "recentes"} onClick={() => setSortBy("recentes")}>
+            Mais recentes
+          </button>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {visSugg.length
