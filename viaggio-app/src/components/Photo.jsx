@@ -9,7 +9,7 @@ export default function Photo({ label, h = 130, tone = "ocean", src }) {
         <img
           src={src}
           alt={label}
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
           onError={() => setImgErr(true)}
           loading="lazy"
         />

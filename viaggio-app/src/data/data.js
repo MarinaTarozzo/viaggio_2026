@@ -204,15 +204,15 @@ export const links = [
   { titulo: "Mapa da viagem", desc: "Rota completa no Google Maps", icone: "map", url: MAPA_URL },
 ];
 
-/* ---- Fotos reais via Unsplash (fallback ao placeholder se falhar) ---- */
+/* ---- Posters das cidades (pasta public/fotos/) + fallback Unsplash ---- */
 export const CITY_PHOTOS = {
-  milao:     "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=800&q=80",
+  milao:     "/fotos/milao.jpg",
   trieste:   "https://images.unsplash.com/photo-1598266849069-b74a7b52c498?auto=format&fit=crop&w=800&q=80",
-  liubliana: "https://images.unsplash.com/photo-1592580131697-fd60d5ba7742?auto=format&fit=crop&w=800&q=80",
-  budapeste: "https://images.unsplash.com/photo-1549893072-4bc678117f45?auto=format&fit=crop&w=800&q=80",
+  liubliana: "/fotos/liubliana.jpg",
+  budapeste: "/fotos/budapeste.jpg",
   viena:     "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80",
-  hallstatt: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
-  caprile:   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+  hallstatt: "/fotos/hallstatt.jpg",
+  caprile:   "/fotos/caprile.jpg",
 }
 
 /* ---- Próxima parada dinâmica (baseada na data de hoje) ---- */
