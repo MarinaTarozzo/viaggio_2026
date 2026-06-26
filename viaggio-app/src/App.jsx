@@ -113,6 +113,7 @@ export default function App() {
               query={query}
               onOpenCity={openCity}
               onMap={onMap}
+              onNav={navTo}
               catFilter={catFilter}
               setCatFilter={setCatFilter}
               {...sharedProps}

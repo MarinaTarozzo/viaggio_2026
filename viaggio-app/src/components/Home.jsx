@@ -7,13 +7,54 @@ import Timeline from './Timeline'
 import HotelCard from './HotelCard'
 import SuggestionCard from './SuggestionCard'
 import UsefulLinks from './UsefulLinks'
-import { cidades, resumo, cidadePorId, normalizeSearch, cidadeMatch } from '../data/data'
+import { cidades, resumo, cidadePorId, normalizeSearch, cidadeMatch, links } from '../data/data'
 
-export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMap, sugg, onVote, rate, ratings, catFilter, setCatFilter, onEdit, onDelete, onVisited }) {
+function buildResults(q, sugg, onOpenCity, onNav) {
+  if (!q) return []
+  const results = []
+
+  cidades.forEach(c => {
+    if (cidadeMatch(c, q)) {
+      results.push({ key: "cidade:" + c.id, tipo: "Cidade", icon: "pin", titulo: c.nome, subtitulo: c.pais, onClick: () => onOpenCity(c.id) })
+    }
+    c.passeios.forEach((p, i) => {
+      if (normalizeSearch(p.nome).includes(q)) {
+        results.push({ key: "passeio:" + c.id + ":" + i, tipo: "Passeio", icon: "route", titulo: p.nome, subtitulo: c.nome, onClick: () => onOpenCity(c.id) })
+      }
+    })
+    c.stays.forEach((s, i) => {
+      if (normalizeSearch(s.hotel).includes(q)) {
+        results.push({ key: "hotel:" + c.id + ":" + i, tipo: "Hotel", icon: "bed", titulo: s.hotel, subtitulo: c.nome, onClick: () => onOpenCity(c.id) })
+      }
+    })
+  })
+
+  sugg.forEach(s => {
+    if (normalizeSearch(s.nome).includes(q)) {
+      const cidade = cidadePorId[s.cidadeId]
+      results.push({
+        key: "sugestao:" + s.id, tipo: "Sugestão", icon: "thumb", titulo: s.nome,
+        subtitulo: cidade ? cidade.nome : "Sugestão de passeio",
+        onClick: () => cidade ? onOpenCity(cidade.id) : onNav("sec-sugestoes"),
+      })
+    }
+  })
+
+  links.forEach((l, i) => {
+    if (normalizeSearch(l.titulo).includes(q) || normalizeSearch(l.desc).includes(q)) {
+      results.push({ key: "link:" + i, tipo: "Arquivo", icon: l.icone || "sheet", titulo: l.titulo, subtitulo: l.desc, onClick: () => onNav("sec-links") })
+    }
+  })
+
+  return results
+}
+
+export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMap, onNav, sugg, onVote, rate, ratings, catFilter, setCatFilter, onEdit, onDelete, onVisited }) {
   const [cityFilter, setCityFilter] = useState("todas")
   const [sortBy, setSortBy] = useState("votos")
 
   const q = normalizeSearch(query.trim())
+  const results = buildResults(q, sugg, onOpenCity, onNav)
   const cats = ["todas", ...Array.from(new Set(sugg.map(s => s.categoria)))]
   const suggCities = Array.from(new Set(sugg.map(s => s.cidadeId).filter(Boolean)))
 
@@ -42,10 +83,45 @@ export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMa
         </div>
       )}
 
-      <section className="block">
-        <SectionHead num="01" title="Próxima parada" />
-        <NextStop onOpenCity={onOpenCity} onMap={onMap} />
-      </section>
+      {q && (
+        <section className="block" id="sec-busca">
+          {results.length ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {results.map(r => (
+                <button key={r.key} className="card" onClick={r.onClick} style={{
+                  display: "flex", alignItems: "center", gap: 12, padding: "12px 14px",
+                  width: "100%", textAlign: "left", cursor: "pointer", background: "var(--surface)",
+                }}>
+                  <span style={{
+                    width: 34, height: 34, borderRadius: "50%", border: "1.6px solid var(--line)",
+                    background: "var(--sand)", display: "flex", alignItems: "center", justifyContent: "center",
+                    color: "var(--ocean)", flex: "none",
+                  }}>
+                    <Icon name={r.icon} size={17} stroke={1.8} />
+                  </span>
+                  <span style={{ flex: 1, minWidth: 0 }}>
+                    <span className="mono" style={{ fontSize: ".64rem", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--ocean-soft)", display: "block" }}>
+                      {r.tipo}
+                    </span>
+                    <b style={{ display: "block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{r.titulo}</b>
+                    {r.subtitulo && <span className="muted" style={{ fontSize: ".82rem" }}>{r.subtitulo}</span>}
+                  </span>
+                  <Icon name="chevron" size={18} style={{ color: "var(--ocean-soft)" }} />
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="muted">Nenhum resultado encontrado para "{query}".</p>
+          )}
+        </section>
+      )}
+
+      {!q && (
+        <section className="block">
+          <SectionHead num="01" title="Próxima parada" />
+          <NextStop onOpenCity={onOpenCity} onMap={onMap} />
+        </section>
+      )}
 
       <section className="block" id="sec-mapa">
         <SectionHead num="02" title="Mapa da viagem" />
