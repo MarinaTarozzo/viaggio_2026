@@ -16,7 +16,7 @@ export const resumo = {
 
 export const cidades = [
   {
-    id: "milao", nome: "Milão", pais: "Itália", bandeira: "IT",
+    id: "milao", nome: "Milão", aliases: ["Milano", "Milan"], pais: "Itália", bandeira: "IT",
     datas: "30 jun – 2 jul  ·  12 – 14 jul", noites: 5,
     resumo: "Base de chegada e de partida. Duomo, Galleria, aperitivo nos Navigli e o retorno final antes do voo.",
     stays: [
@@ -49,7 +49,7 @@ export const cidades = [
     rating: 4.2, ratingN: 3,
   },
   {
-    id: "liubliana", nome: "Liubliana", pais: "Eslovênia", bandeira: "SI",
+    id: "liubliana", nome: "Liubliana", aliases: ["Ljubljana"], pais: "Eslovênia", bandeira: "SI",
     datas: "3 – 4 jul", noites: 1,
     resumo: "Capital pequena e charmosa. A caverna de Postojna já está reservada no caminho.",
     stays: [
@@ -66,7 +66,7 @@ export const cidades = [
     rating: 4.5, ratingN: 4,
   },
   {
-    id: "budapeste", nome: "Budapeste", pais: "Hungria", bandeira: "HU",
+    id: "budapeste", nome: "Budapeste", aliases: ["Budapest"], pais: "Hungria", bandeira: "HU",
     datas: "4 – 7 jul", noites: 3,
     resumo: "Três noites na cidade dos banhos termais, do Parlamento e das pontes sobre o Danúbio.",
     stays: [
@@ -82,7 +82,7 @@ export const cidades = [
     rating: 4.7, ratingN: 5,
   },
   {
-    id: "viena", nome: "Viena", pais: "Áustria", bandeira: "AT",
+    id: "viena", nome: "Viena", aliases: ["Vienna", "Wien"], pais: "Áustria", bandeira: "AT",
     datas: "7 – 10 jul", noites: 3,
     resumo: "Palácios, cafés vienenses e música. Três noites para explorar com calma.",
     stays: [
@@ -126,6 +126,18 @@ export const cidades = [
 ];
 
 export const cidadePorId = Object.fromEntries(cidades.map(c => [c.id, c]));
+
+/* Busca tolerante a acentos e a nomes em outros idiomas (Milano, Vienna, Ljubljana...) */
+export function normalizeSearch(s) {
+  return (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+}
+
+export function cidadeMatch(cidade, q) {
+  if (!cidade) return false;
+  const nq = normalizeSearch(q);
+  const candidatos = [cidade.nome, cidade.id, cidade.pais, ...(cidade.aliases || [])];
+  return candidatos.some(c => normalizeSearch(c).includes(nq));
+}
 
 /* tipo: 'partida' | 'estrada' | 'cidade' | 'retorno' */
 export const dias = [

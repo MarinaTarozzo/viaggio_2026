@@ -7,13 +7,13 @@ import Timeline from './Timeline'
 import HotelCard from './HotelCard'
 import SuggestionCard from './SuggestionCard'
 import UsefulLinks from './UsefulLinks'
-import { cidades, resumo, cidadePorId } from '../data/data'
+import { cidades, resumo, cidadePorId, normalizeSearch, cidadeMatch } from '../data/data'
 
 export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMap, sugg, onVote, rate, ratings, catFilter, setCatFilter, onEdit, onDelete, onVisited }) {
   const [cityFilter, setCityFilter] = useState("todas")
   const [sortBy, setSortBy] = useState("votos")
 
-  const q = query.trim().toLowerCase()
+  const q = normalizeSearch(query.trim())
   const cats = ["todas", ...Array.from(new Set(sugg.map(s => s.categoria)))]
   const suggCities = Array.from(new Set(sugg.map(s => s.cidadeId).filter(Boolean)))
 
@@ -26,13 +26,13 @@ export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMa
   if (catFilter !== "todas") visSugg = visSugg.filter(s => s.categoria === catFilter)
   if (cityFilter !== "todas") visSugg = visSugg.filter(s => s.cidadeId === cityFilter)
   if (q) visSugg = visSugg.filter(s =>
-    s.nome.toLowerCase().includes(q) ||
-    s.quem.toLowerCase().includes(q) ||
-    (s.cidadeId && s.cidadeId.includes(q))
+    normalizeSearch(s.nome).includes(q) ||
+    normalizeSearch(s.quem).includes(q) ||
+    cidadeMatch(cidadePorId[s.cidadeId], q)
   )
 
   const stays = []
-  cidades.forEach(c => c.stays.forEach(s => stays.push({ ...s, cidade: c.nome })))
+  cidades.forEach(c => c.stays.forEach(s => stays.push({ ...s, cidade: c.nome, cidadeId: c.id })))
 
   return (
     <div className="scroll">
@@ -68,15 +68,19 @@ export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMa
       <section className="block" id="sec-hoteis">
         <SectionHead num="04" title="Hotéis reservados" />
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-          {stays
-            .filter(s => !q || s.hotel.toLowerCase().includes(q) || s.cidade.toLowerCase().includes(q))
-            .map((s, i) => (
-              <HotelCard key={i} stay={s} cidade={s.cidade} variant={cardStyle} onMaps={onMap}
-                rating={ratings["hotel:" + s.hotel]}
-                onRate={(v) => rate("hotel:" + s.hotel, v)}
-              />
-            ))
-          }
+          {(() => {
+            const filtered = stays.filter(s =>
+              !q || normalizeSearch(s.hotel).includes(q) || cidadeMatch(cidadePorId[s.cidadeId], q)
+            )
+            return filtered.length
+              ? filtered.map((s, i) => (
+                <HotelCard key={i} stay={s} cidade={s.cidade} variant={cardStyle} onMaps={onMap}
+                  rating={ratings["hotel:" + s.hotel]}
+                  onRate={(v) => rate("hotel:" + s.hotel, v)}
+                />
+              ))
+              : <p className="muted">Nenhum hotel encontrado para "{query}".</p>
+          })()}
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import Icon from './Icon'
 import RoadBlock from './RoadBlock'
-import { dias as allDias, fmtDia, fmtMes, SEM } from '../data/data'
+import { dias as allDias, fmtDia, fmtMes, SEM, cidadePorId, cidadeMatch, normalizeSearch } from '../data/data'
 
 function DayDot({ tipo }) {
   const map = { partida: "plane", estrada: "car", cidade: "pin", retorno: "home" }
@@ -40,11 +40,12 @@ function DiaLabel({ d }) {
 export default function Timeline({ style = "compacto", onOpenCity, query }) {
   let dias = allDias
   if (query) {
-    const q = query.toLowerCase()
+    const q = normalizeSearch(query)
     dias = dias.filter(d =>
-      (d.cidadeNoite || "").toLowerCase().includes(q) ||
-      (d.hotel || "").toLowerCase().includes(q) ||
-      (d.estrada && (d.estrada.origem.toLowerCase().includes(q) || d.estrada.destino.toLowerCase().includes(q)))
+      cidadeMatch(cidadePorId[d.cidadeId], q) ||
+      normalizeSearch(d.cidadeNoite).includes(q) ||
+      normalizeSearch(d.hotel).includes(q) ||
+      (d.estrada && (normalizeSearch(d.estrada.origem).includes(q) || normalizeSearch(d.estrada.destino).includes(q)))
     )
   }
   if (!dias.length) return <p className="muted">Nenhum dia encontrado para "{query}".</p>
