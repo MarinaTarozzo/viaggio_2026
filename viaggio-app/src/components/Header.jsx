@@ -8,6 +8,7 @@ const NAV = [
   { id: "sec-mapa",    label: "Mapa",    icon: "map" },
   { id: "sec-hoteis",  label: "Hotéis",  icon: "bed" },
   { id: "sec-sugestoes", label: "Sugestões", icon: "thumb" },
+  { id: "sec-despesas", label: "Despesas", icon: "wallet" },
   { id: "sec-links",   label: "Links",   icon: "sheet" },
 ]
 

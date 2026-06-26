@@ -29,6 +29,8 @@ export default function Icon({ name, size = 24, stroke = 1.6, fill = false, styl
     plane: <path d="M21 15.5l-7-2-3.5 6-1.8-.6 1.3-5.2-4.2-1.2-2 2-1.5-.5 1.2-3-.8-2.8 1.5.4 1.6-1.6 1 4.4 5.2 1.6 1.3-7 1.9.5-2 7.2Z" />,
     thumb: <><path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" /><path d="M7 11l4-7a2 2 0 0 1 2 1.8V9h5.2a1.6 1.6 0 0 1 1.6 2l-1.4 7a1.6 1.6 0 0 1-1.6 1.3H7" /></>,
     filter: <><line x1="4" y1="7" x2="20" y2="7" /><line x1="7" y1="12" x2="17" y2="12" /><line x1="10" y1="17" x2="14" y2="17" /></>,
+    wallet: <><rect x="3" y="6" width="18" height="13" rx="2" /><path d="M3 10h18" /><circle cx="16.5" cy="14" r="1.1" fill="currentColor" /></>,
+    download: <><path d="M12 4v10" /><polyline points="7 10 12 15 17 10" /><path d="M5 19h14" /></>,
   };
   return <svg {...common} aria-hidden="true">{P[name] || null}</svg>;
 }

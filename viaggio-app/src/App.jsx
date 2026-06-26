@@ -20,7 +20,7 @@ export default function App() {
   const [pendingDel, setPendingDel] = useState(null)
   const [showTop, setShowTop] = useState(false)
 
-  const { sugg, ratings, loading, onVote, rate, saveSug, deleteSug, toggleVisited } = useViaggio(user)
+  const { sugg, ratings, expenses, loading, onVote, rate, saveSug, deleteSug, toggleVisited, saveExpense, deleteExpense } = useViaggio(user)
 
   useEffect(() => {
     document.documentElement.style.setProperty("--base", "22px")
@@ -116,6 +116,10 @@ export default function App() {
               onNav={navTo}
               catFilter={catFilter}
               setCatFilter={setCatFilter}
+              expenses={expenses}
+              onSaveExpense={saveExpense}
+              onDeleteExpense={deleteExpense}
+              user={user}
               {...sharedProps}
             />
           : <CityDetail

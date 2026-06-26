@@ -13,6 +13,8 @@ create table if not exists public.suggestions (
   quem       text    not null,
   motivo     text    default '',
   link       text    default '',
+  periodo    text    default '',
+  reservar   boolean default false,
   visitado   boolean default false,
   created_at timestamptz default now()
 );
@@ -34,20 +36,35 @@ create table if not exists public.ratings (
   primary key (item_key, user_name)
 );
 
--- 4. Políticas de acesso (permite tudo sem login — app familiar privado)
+-- 4. Tabela de despesas
+create table if not exists public.expenses (
+  id         text primary key,
+  nome       text    not null,
+  descricao  text    default '',
+  valor      numeric not null,
+  moeda      text    not null,
+  quem       text    not null,
+  data       date    not null,
+  created_at timestamptz default now()
+);
+
+-- 5. Políticas de acesso (permite tudo sem login — app familiar privado)
 alter table public.suggestions enable row level security;
 alter table public.votes        enable row level security;
 alter table public.ratings      enable row level security;
+alter table public.expenses     enable row level security;
 
 drop policy if exists "allow_all_suggestions" on public.suggestions;
 drop policy if exists "allow_all_votes"        on public.votes;
 drop policy if exists "allow_all_ratings"      on public.ratings;
+drop policy if exists "allow_all_expenses"     on public.expenses;
 
 create policy "allow_all_suggestions" on public.suggestions for all to anon using (true) with check (true);
 create policy "allow_all_votes"        on public.votes        for all to anon using (true) with check (true);
 create policy "allow_all_ratings"      on public.ratings      for all to anon using (true) with check (true);
+create policy "allow_all_expenses"     on public.expenses     for all to anon using (true) with check (true);
 
--- 5. Dados iniciais — sugestões da família
+-- 6. Dados iniciais — sugestões da família
 insert into public.suggestions (id, nome, categoria, cidade_id, quem, motivo, link, visitado) values
   ('s1','Banhos Termais Széchenyi','Experiência',     'budapeste','Ana Paula','Os maiores banhos termais da Europa, lindos ao entardecer.','https://www.szechenyibath.hu/',false),
   ('s2','Aperitivo nos Navigli',   'Experiência',     'milao',    'Fernando', 'Spritz à beira do canal antes do jantar. Clima de verão italiano.','',false),
@@ -59,7 +76,7 @@ insert into public.suggestions (id, nome, categoria, cidade_id, quem, motivo, li
   ('s8','Mercado Central de Budapeste','Loja',         'budapeste','Marina',  'Páprica, lembrancinhas e lángos no andar de cima.','',false)
 on conflict (id) do nothing;
 
--- 6. Votos iniciais (simulando os votos do protótipo)
+-- 7. Votos iniciais (simulando os votos do protótipo)
 insert into public.votes (suggestion_id, user_name) values
   ('s1','Ana Paula'),('s1','Fernando'),('s1','Mariana'),('s1','Pedro'),('s1','Marina'),
   ('s2','Ana Paula'),('s2','Fernando'),('s2','Pedro'),('s2','Marina'),('s2','Mariana'),

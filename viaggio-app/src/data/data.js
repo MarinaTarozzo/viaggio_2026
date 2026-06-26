@@ -216,6 +216,13 @@ export const links = [
   { titulo: "Mapa da viagem", desc: "Rota completa no Google Maps", icone: "map", url: MAPA_URL },
 ];
 
+export const MOEDAS = [
+  { code: "EUR", nome: "Euro (€)" },
+  { code: "HUF", nome: "Florim húngaro (Ft)" },
+  { code: "BRL", nome: "Real (R$)" },
+  { code: "USD", nome: "Dólar (US$)" },
+];
+
 /* ---- Posters das cidades (pasta public/fotos/) + fallback Unsplash ---- */
 export const CITY_PHOTOS = {
   milao:     "/fotos/milao.jpg",

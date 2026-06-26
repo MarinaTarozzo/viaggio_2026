@@ -5,15 +5,17 @@ import { sugestoesIniciais } from '../data/data'
 export function useViaggio(userName) {
   const [sugg, setSugg] = useState([])
   const [ratings, setRatings] = useState({})
+  const [expenses, setExpenses] = useState([])
   const [loading, setLoading] = useState(hasSupabase)
 
   /* ---------- load from supabase ---------- */
   const loadAll = useCallback(async () => {
     if (!hasSupabase || !userName) return
-    const [suggsRes, votesRes, ratingsRes] = await Promise.all([
+    const [suggsRes, votesRes, ratingsRes, expensesRes] = await Promise.all([
       supabase.from('suggestions').select('*').order('created_at'),
       supabase.from('votes').select('suggestion_id, user_name'),
       supabase.from('ratings').select('item_key, value'),
+      supabase.from('expenses').select('*').order('data', { ascending: false }),
     ])
 
     const voteCounts = {}
@@ -40,6 +42,8 @@ export function useViaggio(userName) {
         k, Math.round(vals.reduce((a, b) => a + b, 0) / vals.length * 10) / 10,
       ])
     ))
+
+    setExpenses((expensesRes.data || []).map(e => ({ ...e, valor: Number(e.valor) })))
     setLoading(false)
   }, [userName])
 
@@ -134,5 +138,34 @@ export function useViaggio(userName) {
     await supabase.from('suggestions').update({ visitado: next }).eq('id', id)
   }
 
-  return { sugg, ratings, loading, onVote, rate, saveSug, deleteSug, toggleVisited }
+  /* ---------- save (create or edit) expense ---------- */
+  const saveExpense = async (f, id) => {
+    if (!hasSupabase) {
+      if (id) {
+        setExpenses(list => list.map(e => e.id === id ? { ...e, ...f } : e))
+      } else {
+        setExpenses(list => [{ id: 'e' + Date.now(), ...f }, ...list])
+      }
+      return
+    }
+    const payload = {
+      nome: f.nome, descricao: f.descricao || '', valor: f.valor,
+      moeda: f.moeda, quem: f.quem, data: f.data,
+    }
+    if (id) {
+      await supabase.from('expenses').update(payload).eq('id', id)
+    } else {
+      await supabase.from('expenses').insert({ id: 'e' + Date.now(), ...payload })
+    }
+    await loadAll()
+  }
+
+  /* ---------- delete expense ---------- */
+  const deleteExpense = async (id) => {
+    setExpenses(list => list.filter(x => x.id !== id))
+    if (!hasSupabase) return
+    await supabase.from('expenses').delete().eq('id', id)
+  }
+
+  return { sugg, ratings, expenses, loading, onVote, rate, saveSug, deleteSug, toggleVisited, saveExpense, deleteExpense }
 }

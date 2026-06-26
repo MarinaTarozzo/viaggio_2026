@@ -7,9 +7,15 @@ import Timeline from './Timeline'
 import HotelCard from './HotelCard'
 import SuggestionCard from './SuggestionCard'
 import UsefulLinks from './UsefulLinks'
+import Expenses from './Expenses'
 import { cidades, resumo, cidadePorId, normalizeSearch, cidadeMatch, links } from '../data/data'
 
-function buildResults(q, sugg, onOpenCity, onNav) {
+function fmtMoeda(valor, moeda) {
+  try { return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: moeda }).format(valor) }
+  catch { return `${valor} ${moeda}` }
+}
+
+function buildResults(q, sugg, expenses, onOpenCity, onNav) {
   if (!q) return []
   const results = []
 
@@ -46,15 +52,24 @@ function buildResults(q, sugg, onOpenCity, onNav) {
     }
   })
 
+  expenses.forEach(e => {
+    if (normalizeSearch(e.nome).includes(q) || normalizeSearch(e.descricao || "").includes(q)) {
+      results.push({
+        key: "despesa:" + e.id, tipo: "Despesa", icon: "wallet", titulo: e.nome,
+        subtitulo: `${e.quem} · ${fmtMoeda(e.valor, e.moeda)}`, onClick: () => onNav("sec-despesas"),
+      })
+    }
+  })
+
   return results
 }
 
-export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMap, onNav, sugg, onVote, rate, ratings, catFilter, setCatFilter, onEdit, onDelete, onVisited }) {
+export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMap, onNav, sugg, onVote, rate, ratings, catFilter, setCatFilter, onEdit, onDelete, onVisited, expenses, onSaveExpense, onDeleteExpense, user }) {
   const [cityFilter, setCityFilter] = useState("todas")
   const [sortBy, setSortBy] = useState("votos")
 
   const q = normalizeSearch(query.trim())
-  const results = buildResults(q, sugg, onOpenCity, onNav)
+  const results = buildResults(q, sugg, expenses, onOpenCity, onNav)
   const cats = ["todas", ...Array.from(new Set(sugg.map(s => s.categoria)))]
   const suggCities = Array.from(new Set(sugg.map(s => s.cidadeId).filter(Boolean)))
 
@@ -214,6 +229,14 @@ export default function Home({ cardStyle, timelineStyle, query, onOpenCity, onMa
       <section className="block" id="sec-links">
         <SectionHead num="06" title="Links úteis" />
         <UsefulLinks />
+      </section>
+
+      <section className="block" id="sec-despesas">
+        <SectionHead num="07" title="Despesas da viagem" />
+        <p className="muted" style={{ margin: "-6px 0 14px", fontSize: ".9rem" }}>
+          Registre quem pagou o quê e baixe a planilha quando quiser.
+        </p>
+        <Expenses expenses={expenses} onSave={onSaveExpense} onDelete={onDeleteExpense} user={user} />
       </section>
 
       <section className="block" style={{ borderBottom: "none", textAlign: "center", paddingTop: 30, paddingBottom: 30 }}>
